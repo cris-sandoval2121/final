@@ -1,12 +1,17 @@
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
+import Post from './Post/Post.jsx'
+import { ProfileProvider } from "../contexts/profileContext";
 
 function App() {
     return ( 
-        <div className="page">
+        <ProfileProvider>
+            <div className="page">
             
             <Main/>
         </div>
+        </ProfileProvider>
+        
     
      );
 }

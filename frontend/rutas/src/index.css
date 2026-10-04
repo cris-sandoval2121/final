@@ -1,6 +1,9 @@
 @import './blocks/header.css';
+@import './blocks/nav.css';
+@import './blocks/banner.css';
+@import './blocks/profile.css';
 @import './blocks/post.css';
-@import './blocks/PopupForm.css';
+@import './blocks/popup-form.css';
 
 .page {
     max-width: 1400px;
@@ -8,7 +11,7 @@
     /* background-color: red; */
 }
 
-.contenedor{
+.contenedor {
     width: 90%;
     margin: 0 auto;
 }
@@ -24,10 +27,12 @@ body {
     box-sizing: border-box;
 }
 
-h1{
+h1 {
+    font-size: 3rem;
+    margin-bottom: 120px;
     color: #fef0f0;
 }
 
-p{
+p {
     color: #fef0f0;
 }

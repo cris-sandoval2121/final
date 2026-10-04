@@ -1,17 +1,32 @@
 import Profile from "../../Profile/Profile";
-function Banner({handlePopup, nombre, imagenPerf, description}) {
-    return (
-             <div className="banner">
-                <img className="banner__imagen" src="https://i.pinimg.com/1200x/6c/12/69/6c1269afc479c6324f1942d7e9300897.jpg" alt="banner"></img>
+import { useProfile } from "../../../contexts/profileContext";
+import { Wrench } from "lucide-react";
 
-                <button className="banner__btn"  onClick={()=>handlePopup("banner")}>🔧</button>
+function Banner({ handlePopup }) {
+  const { bannerImagen, setBannerImagen } = useProfile('');
 
-                <Profile handlePopup={handlePopup}
-                nombre={nombre}
-                imagenPerf={imagenPerf}
-                description={description}/>
-  </div>
-      );
+  const bannerDefault =
+    "https://i.pinimg.com/1200x/c4/d0/91/c4d091b63e312b0dcd91e4bcc12471d6.jpg";
+
+  return (
+    <div className="banner">
+      <img
+        className="banner__imagen"
+        src={bannerImagen || bannerDefault}
+        alt="banner"
+      ></img>
+
+      <button
+        className="banner__btn"
+        onClick={() => handlePopup("banner")}
+        aria-label="Editar banner"
+      >
+        <Wrench size={18} />
+      </button>
+
+      <Profile handlePopup={handlePopup} />
+    </div>
+  );
 }
 
 export default Banner;

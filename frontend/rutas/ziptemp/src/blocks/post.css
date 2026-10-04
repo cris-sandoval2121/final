@@ -1,0 +1,84 @@
+.post {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fef0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 5px 6px 0 #000;
+}
+
+/* USUARIO */
+
+.post__usuario {
+    padding: 15px 20px;
+}
+
+.post__usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.post__usuario-imagen {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #d09e9e;
+}
+
+.post__usuario-nombre {
+    margin: 0;
+    font-size: 1rem;
+    color: #222;
+}
+
+/* IMAGEN */
+
+.post__imagen {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+/* CONTENIDO */
+
+.post__contenido {
+    padding: 20px;
+}
+
+.post__comentario {
+    margin: 0 0 20px;
+    color: #222;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* BOTONES */
+
+.post__acciones {
+    display: flex;
+    gap: 15px;
+}
+
+.post__boton {
+    border: none;
+    padding: 10px 20px;
+    background-color: #f485c6;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0 #000;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.post__boton:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 6px 0 #000;
+}
+
+.post__boton:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #000;
+}
