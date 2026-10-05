@@ -87,7 +87,7 @@
 .post__header {
     display: flex;
     align-items: center;
-    justify-content:flex-start;
+    justify-content: flex-start;
     margin-bottom: 20px;
     gap: 30px;
 }

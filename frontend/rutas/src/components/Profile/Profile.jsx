@@ -23,14 +23,52 @@ function Profile({ handlePopup }) {
   const Namedeafault = 'Cris Sandoval';
   const sobreMideafault = 'Me gusta tomar fotografias y viajar...';
   return (
+
+    <>
+
     <div className="perfil">
-      <img
+
+      <div className="perfil__contenedorUno">
+
+        <>  <img
         className="perfil__imagen"
         src={imagenPerfil || perfilDeafault}
         alt="imagen de perfil"
       ></img>
+
+      
+        </>
+       
+
+      
+      <div className="perfil__card">
+        <h1 className="perfil__nombre">{nombre || Namedeafault}</h1>
+        <p className="perfil__descrip">{sobreMi || sobreMideafault}</p>
+      </div>
+
+      
+      <div className="perfil__btn">
+        <button
+          className=" perfil__editar perfil__editaruno "
+          onClick={() => handlePopup("perfil")}
+        >
+          <PencilLine size={16} /> Editar Perfil
+        </button>
+        <button
+          className="perfil__editar"
+          onClick={() => handlePopup("description")}
+        >
+          <FileText size={16} /> Editar description
+        </button>
+      </div>
+
+      </div>
+     
+
+
       <div className="perfil__gustos">
-        <button className="perfil__gustos-btn">
+
+        <>  <button className="perfil__gustos-btn">
           <Camera size={16} /> Fotos
         </button>
         <button className="perfil__gustos-btn">
@@ -45,8 +83,12 @@ function Profile({ handlePopup }) {
         <button className="perfil__gustos-btn">
           <BookOpenText size={16} /> Historis
         </button>
-      </div>
-      <div className="perfil__tableros">
+        </>
+
+      
+
+
+         <div className="perfil__tableros">
         <img
           className="perfil__tableros-imagenes"
           src="https://i.pinimg.com/736x/86/92/ed/8692ed041377064d2811324f9a30b7a2.jpg"
@@ -66,28 +108,16 @@ function Profile({ handlePopup }) {
         ></img>
       </div>
 
-
-      <div className="perfil__card">
-        <h1 className="perfil__nombre">{nombre || Namedeafault}</h1>
-        <p className="perfil__descrip">{sobreMi || sobreMideafault}</p>
       </div>
 
+     
 
-      <div className="perfil__btn">
-        <button
-          className=" perfil__editar perfil__editaruno "
-          onClick={() => handlePopup("perfil")}
-        >
-          <PencilLine size={16} /> Editar Perfil
-        </button>
-        <button
-          className="perfil__editar"
-          onClick={() => handlePopup("description")}
-        >
-          <FileText size={16} /> Editar description
-        </button>
-      </div>
+
+
     </div>
+    
+    </>
+    
   );
 }
 

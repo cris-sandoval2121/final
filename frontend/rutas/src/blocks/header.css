@@ -1,6 +1,5 @@
 .header {
-    min-height: 700px;
-    height: 730px;
+    min-height: auto;
     /* position: relative; */
     /* background-color: red; */
 }

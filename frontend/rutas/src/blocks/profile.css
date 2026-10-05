@@ -1,87 +1,78 @@
 .perfil {
-    /* background-color: #8d387e; */
-    position: absolute;
-    bottom: -310px;
-    left: 20px;
-    width: auto;
-    max-width: calc(100% - 40px);
-    padding: 10px;
-    margin-bottom: 12px;
-    height: auto;
+    /* width: auto;
+    height: auto; */
     box-sizing: border-box;
-    display: grid;
-    justify-items: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    background-color: rgb(234, 234, 243);
+    border-radius: 10px;
+    /* padding:0 0px; */
+    gap: 20px;
+    max-height: 190px;
+
+
+}
+
+.perfil__contenedorUno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
     
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(auto, 50px);
-    /* background-color: blue; */
+    position: relative;
 }
 
 .perfil__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     line-height: 1rem;
-    grid-column: 1/6;
-    grid-row: 5/7;
-
-    background: rgba(255, 255, 255, 0.35);
-    border: 2px solid rgba(0, 0, 0, 0.8);
-    border-radius: 18px;
-    box-shadow: 5px 6px 0 #000;
-
-    padding: 18px 20px;
-
-    /* En lugar de height */
-    min-height: 150px;
-    height: auto;
-
-    background-color: rgb(236, 235, 235);
+    padding-right: 8px;
+    gap: 0;
 }
 
 .perfil__imagen {
-    width: 200px;
-    height: 200px;
+    position: relative;
+    top: -40px;
+    right: 38px;
+    width: 230px;
+    height: 230px;
     object-fit: cover;
     object-position: center;
-    border-radius: 50%;
-    background-color: #d09e9e;
-    border: 3px solid #d09e9e;
-    box-sizing: border-box;
-    grid-row: 1/5;
+    border-radius: 100%;
+    border: 4px solid rgb(234, 234, 243);
 }
 
 .perfil__nombre {
-    margin: 0 0 12px;
-    font-size: 2.2rem;
-    line-height: 1.1;
+    margin: 0;
+    font-size: 2rem;
     color: #3e1f2a;
     border-radius: 10px;
-    font-size: 2rem;
+    line-height: 1.1;
 }
 
 .perfil__descrip {
+    margin: 6px 0 0;
     font-size: 1.2rem;
-    width: 100%;
-    margin: 0;
-    line-height: 1.5;
     border-radius: 10px;
     color: black;
-    overflow-wrap: anywhere;
-    
+    line-height: 1.3;
 }
 
 .perfil__gustos {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 40px;
-    grid-column: 8/14;
-    grid-row: 3/5;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 10px;
 }
 
 .perfil__gustos-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
     gap: 8px;
     border: none;
     padding: 10px;
@@ -89,8 +80,7 @@
     background-color: #f485c6;
     border-radius: 10px;
     box-shadow: 3px 4px 0 #000;
-    position: relative;
-    top: 0;
+
     cursor: pointer;
     transition: 0.15s ease;
 }
@@ -106,18 +96,16 @@
 }
 
 .perfil__tableros {
-    width: 600px;
+    width: auto;
     margin-top: 20px;
     display: flex;
-    justify-content: flex-start;
-    grid-row: 5/8;
-    grid-column: 8/14;
+    grid-column: 1/7;
     gap: 10px;
 }
 
 .perfil__tableros-imagenes {
     width: 100%;
-    height: 190px;
+    height: 110px;
     object-fit: cover;
     object-position: 100% 100%;
     transition: all 0.70s;
@@ -136,16 +124,10 @@
 }
 
 .perfil__editar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    gap: 8px;
+
     border: none;
     border: solid rgba(253, 253, 253, 0.749) 1px;
-    padding: 10px;
-    width: 100%;
-    min-width: 200px;
+
     background-color: #f485c6;
     border-radius: 10px;
     box-shadow: 3px 1px 0 #8d387e;

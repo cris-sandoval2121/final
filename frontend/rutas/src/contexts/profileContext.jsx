@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from "react";
 const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
+
+
     const [nombre, setNombre] = useState("");
     const [imagenPerfil, setImagenPerfil] = useState("");
 

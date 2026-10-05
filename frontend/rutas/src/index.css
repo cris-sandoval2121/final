@@ -4,15 +4,18 @@
 @import './blocks/profile.css';
 @import './blocks/post.css';
 @import './blocks/popup-form.css';
+@import './blocks/createpost.css';
+@import './blocks/createpostpopup.css';
 
 .page {
-    max-width: 1400px;
+    max-width: 1450px;
     margin: 0 auto;
+    padding: 0 20px;
     /* background-color: red; */
 }
 
 .contenedor {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 

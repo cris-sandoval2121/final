@@ -2,12 +2,16 @@ import { useProfile } from "../../contexts/profileContext.jsx";
 
 
 
-function Post() {
+function Post({textoPost}) {
 
+
+    const perfilDefault2 = 'https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg';
 
     const { nombre,
         imagenPerfil,
     } = useProfile();
+
+    
     return (
         <div className="contenedor">
 
@@ -23,7 +27,7 @@ function Post() {
                     <div className="post__usuario-info">
                         <img
                             className="post__usuario-imagen"
-                            src={imagenPerfil} alt="Foto de perfil de Cris" />
+                            src={imagenPerfil || perfilDefault2} alt="Foto de perfil de Cris" />
                         <h2 className="post__usuario-nombre">{nombre || 'Usuario'}</h2>
                     </div>
                 </div>
@@ -34,7 +38,7 @@ function Post() {
 
                 <div className="post__contenido">
                     <p className="post__comentario">
-                        Explorando nuevos lugares y creando recuerdos. lorem
+                        {textoPost}
                     </p>
                     <div className="post__acciones">
                         <button className="post__boton">Like </button>
