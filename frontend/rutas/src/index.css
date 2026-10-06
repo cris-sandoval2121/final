@@ -8,15 +8,25 @@
 @import './blocks/createpostpopup.css';
 
 .page {
-    max-width: 1450px;
+    /* max-width: 1450px; */
+    width: 88%;
     margin: 0 auto;
     padding: 0 20px;
     /* background-color: red; */
 }
 
+img {
+    max-width: 100%;
+}
+
 .contenedor {
     width: 100%;
     margin: 0 auto;
+}
+
+.contenedordos {
+    max-width: 1000px;
+    /* width: 62%; */
 }
 
 body {
@@ -38,4 +48,17 @@ h1 {
 
 p {
     color: #fef0f0;
+}
+
+@media (max-width: 768px) {
+    .page {
+        width: 100%;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 390px) {
+    .page {
+        padding: 0 12px;
+    }
 }

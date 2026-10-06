@@ -1,7 +1,10 @@
 .nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 12px 20px;
+    min-width: 0;
     padding: 12px 40px;
     /* width: 100%; */
     background-color: rgba(250, 235, 215, 0);
@@ -16,11 +19,54 @@
 
 .nav__contenedor {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    min-width: 0;
     gap: 25px;
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .nav__contenedor {
+        column-gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        justify-content: flex-start;
+        gap: 10px 16px;
+        margin: 8px 0;
+        padding: 10px 14px;
+    }
+
+    .nav__contenedor {
+        column-gap: 12px;
+        row-gap: 8px;
+    }
+
+    .nav__links a {
+        gap: 5px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 390px) {
+    .nav {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .nav__contenedor {
+        column-gap: 9px;
+    }
 }
 
 .nav__links a {
@@ -55,4 +101,41 @@
 
 .nav__links a:hover::after {
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        justify-content: flex-start;
+        gap: 10px 16px;
+        margin: 8px 0;
+        padding: 10px 14px;
+    }
+
+    .nav__contenedor {
+        column-gap: 12px;
+        row-gap: 8px;
+    }
+
+    .nav__links a {
+        gap: 5px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav {
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    .nav__contenedor {
+        flex: 1 1 100%;
+        justify-content: flex-start;
+        column-gap: 12px;
+    }
+
+    .nav__links a {
+        font-size: 13px;
+    }
 }

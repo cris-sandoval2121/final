@@ -7,7 +7,7 @@ function CreatePost({handlePopupCreatePost}) {
 const {imagenPerfil} = useProfile();
 
     return (
-        <section className="create-post">
+        <section className="create-post contenedordos">
             <div className="create-post__top">
                 <img
                     className="create-post__avatar"

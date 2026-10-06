@@ -1,11 +1,20 @@
 .post {
-    width: 100%;
-    max-width: 600px;
-    margin: 40px auto;
+    /* width: 10%; */
+    /* max-width: 100%; */
     background-color: #fef0f0;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 5px 6px 0 #000;
+    margin-bottom: 40px;
+}
+
+.postCon {
+    /* height: 500px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    /* gap: 20px; */
 }
 
 /* USUARIO */
@@ -37,10 +46,19 @@
 /* IMAGEN */
 
 .post__imagen {
+    border-radius: 30px;
+    background-color: red;
+    overflow: hidden;
     display: block;
     width: 100%;
-    height: 500px;
+    aspect-ratio: 14/7;
     object-fit: cover;
+    /* margin: 0; */
+}
+
+.post__imagen-contenedor {
+    padding: 0 40px;
+    min-width: 0;
 }
 
 /* CONTENIDO */
@@ -60,6 +78,7 @@
 
 .post__acciones {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -128,4 +147,31 @@
 
 .post__agregar-btn:active {
     transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+    .post__imagen-contenedor {
+        padding: 0 16px;
+    }
+
+    .post__usuario {
+        padding: 14px 16px;
+    }
+
+    .post__contenido {
+        padding: 16px;
+    }
+
+    .post__header {
+        gap: 16px;
+    }
+
+    .post__heading {
+        font-size: 20px;
+    }
+
+    .post__boton {
+        flex: 1 1 110px;
+        padding: 10px 14px;
+    }
 }

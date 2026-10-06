@@ -68,7 +68,8 @@ function Profile({ handlePopup }) {
 
       <div className="perfil__gustos">
 
-        <>  <button className="perfil__gustos-btn">
+
+         <button className="perfil__gustos-btn">
           <Camera size={16} /> Fotos
         </button>
         <button className="perfil__gustos-btn">
@@ -83,7 +84,6 @@ function Profile({ handlePopup }) {
         <button className="perfil__gustos-btn">
           <BookOpenText size={16} /> Historis
         </button>
-        </>
 
       
 

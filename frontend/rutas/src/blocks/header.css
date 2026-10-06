@@ -1,7 +1,8 @@
 .header {
-    min-height: auto;
+    /* height: 150%; */
     /* position: relative; */
     /* background-color: red; */
+    min-width: 0;
 }
 
 
@@ -26,4 +27,11 @@
     transform: scale(1.4);
 
 
+}
+
+@media (max-width: 600px) {
+    .banner__btn {
+        top: 8px;
+        right: 8px;
+    }
 }
