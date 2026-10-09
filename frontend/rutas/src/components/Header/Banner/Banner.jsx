@@ -1,9 +1,10 @@
 import Profile from "../../Profile/Profile";
 import { useProfile } from "../../../contexts/profileContext";
-import { Wrench } from "lucide-react";
+import { Wrench, Image } from "lucide-react";
 
 function Banner({ handlePopup }) {
   const { bannerImagen, setBannerImagen } = useProfile('');
+
 
   const bannerDefault =
     "https://i.pinimg.com/1200x/c4/d0/91/c4d091b63e312b0dcd91e4bcc12471d6.jpg";
@@ -21,7 +22,7 @@ function Banner({ handlePopup }) {
         onClick={() => handlePopup("banner")}
         aria-label="Editar banner"
       >
-        <Wrench size={18} />
+        <Image size={18} />
       </button>
 
       <Profile handlePopup={handlePopup} />

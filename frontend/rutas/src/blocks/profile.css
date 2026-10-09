@@ -9,7 +9,7 @@
     background-color: rgb(234, 234, 243);
     border-radius: 10px;
     /* padding:0 0px; */
-    gap: 20px;
+    gap: 150px;
     max-height: 190px;
 
 
@@ -20,7 +20,10 @@
     justify-content: center;
     align-items: center;
     margin-right: 20px;
-    
+    /* margin-left: -100px; */
+    max-width: 900px;
+    min-width: 500px;
+
     position: relative;
 }
 
@@ -32,18 +35,23 @@
     line-height: 1rem;
     padding-right: 8px;
     gap: 0;
+    min-width: 240px;
 }
 
+
+
 .perfil__imagen {
+    border: solid 4px rgb(234, 234, 243);
     position: relative;
-    top: -40px;
-    right: 38px;
+    top: -60px;
     width: 230px;
     height: 230px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center;
-    border-radius: 100%;
-    border: 4px solid rgb(234, 234, 243);
+    border-radius: 50%;
+    display: block;
+    flex: 0 0 230px;
 }
 
 .perfil__nombre {
@@ -60,6 +68,10 @@
     border-radius: 10px;
     color: black;
     line-height: 1.3;
+    max-width: 200px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+
 }
 
 .perfil__gustos {
@@ -174,7 +186,7 @@
         right: auto;
         width: clamp(100px, 16vw, 150px);
         height: auto;
-        aspect-ratio: 1;
+        aspect-ratio: 1 / 1;
         flex: 0 0 auto;
     }
 
@@ -225,6 +237,8 @@
         grid-column: 1;
         grid-row: 1 / span 2;
         width: 72px;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .perfil__card {

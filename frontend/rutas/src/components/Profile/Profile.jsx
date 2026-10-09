@@ -20,24 +20,28 @@ function Profile({ handlePopup }) {
   } = useProfile();
 
   const perfilDeafault = 'https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg';
-  const Namedeafault = 'Cris Sandoval';
+  const Namedeafault = 'Usuario';
   const sobreMideafault = 'Me gusta tomar fotografias y viajar...';
   return (
 
     <>
 
     <div className="perfil">
+      
 
       <div className="perfil__contenedorUno">
 
-        <>  <img
+
+             <img
         className="perfil__imagen"
         src={imagenPerfil || perfilDeafault}
         alt="imagen de perfil"
       ></img>
+        
+      
 
       
-        </>
+      
        
 
       
@@ -110,7 +114,7 @@ function Profile({ handlePopup }) {
 
       </div>
 
-     
+    
 
 
 

@@ -24,7 +24,7 @@ function Nav() {
         </li>
         <li className="nav__links">
           <a href="#">
-            <Heart size={16} /> Favoritos
+            <Heart size={16} /> Guardados
           </a>
         </li>
       </ul>

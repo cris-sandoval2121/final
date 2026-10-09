@@ -1,11 +1,47 @@
 .post {
-    /* width: 10%; */
-    /* max-width: 100%; */
+    /* width: 70%; */
+    width: 900px;
+    max-width: 100%;
     background-color: #fef0f0;
     border-radius: 15px;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 5px 6px 0 #000;
     margin-bottom: 40px;
+    /* max-height: 700px; */
+    overflow-y: auto;
+    min-width: 200px;
+    scrollbar-width: auto;
+    scrollbar-color: #b97878 #f8dddd;
+
+}
+
+.post::-webkit-scrollbar {
+    width: 14px;
+}
+
+.post::-webkit-scrollbar-track {
+    background: #f8dddd;
+    border-radius: 8px;
+}
+
+.post::-webkit-scrollbar-thumb {
+    background: #b97878;
+    border: 2px solid #f8dddd;
+    border-radius: 8px;
+}
+
+.post::-webkit-scrollbar-thumb:hover {
+    background: #e53935;
+    cursor: grab;
+}
+
+.post::-webkit-scrollbar-thumb:active {
+    background: #b71c1c;
+    cursor: grabbing;
+}
+
+.post:hover {
+    scrollbar-color: #e53935 #f8dddd;
 }
 
 .postCon {
@@ -14,7 +50,9 @@
     justify-content: center;
     flex-direction: column;
     align-items: stretch;
-    /* gap: 20px; */
+    gap: 20px;
+
+
 }
 
 /* USUARIO */
@@ -47,13 +85,13 @@
 
 .post__imagen {
     border-radius: 30px;
-    background-color: red;
+    /* background-color: red; */
     overflow: hidden;
     display: block;
     width: 100%;
-    aspect-ratio: 14/7;
+    /* aspect-ratio: 16/9; */
     object-fit: cover;
-    /* margin: 0; */
+    max-height: 500px;
 }
 
 .post__imagen-contenedor {
@@ -72,6 +110,10 @@
     color: #222;
     font-size: 1rem;
     line-height: 1.4;
+    /* word-break: break-all; */
+    word-wrap: break-word;
+
+
 }
 
 /* BOTONES */
@@ -80,6 +122,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    /* position: static; */
 }
 
 .post__boton {
@@ -95,6 +138,13 @@
 .post__boton:hover {
     transform: translateY(-2px);
     box-shadow: 3px 6px 0 #000;
+}
+
+.post__boton--eliminar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
 }
 
 .post__boton:active {
@@ -150,6 +200,18 @@
 }
 
 @media (max-width: 600px) {
+
+    .post {
+        width: 100%;
+
+    }
+
+    .post__comentario {
+        /* width: 20%; */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
     .post__imagen-contenedor {
         padding: 0 16px;
     }
@@ -174,4 +236,29 @@
         flex: 1 1 110px;
         padding: 10px 14px;
     }
+}
+
+.post__btn-guardado {
+    background-color: red;
+    color: white;
+}
+
+
+
+.post__read-more {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 4px;
+
+  color: #eb21ca;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.post__read-more:hover {
+  color: #d63384;
+  text-decoration: underline;
 }

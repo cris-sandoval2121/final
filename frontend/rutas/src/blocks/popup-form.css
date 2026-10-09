@@ -74,6 +74,12 @@
     resize: vertical;
 }
 
+.popup__character-count {
+    align-self: flex-end;
+    color: #7b567a;
+    font-size: 0.8rem;
+}
+
 .popup__buttons {
     display: flex;
     justify-content: flex-end;

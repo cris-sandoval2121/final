@@ -291,3 +291,21 @@
     box-sizing: border-box;
   }
 }
+
+.popup__validation-error {
+  margin: -8px 0 0;
+  color: #9d285f;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+input {
+  border: 2px solid #eee;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
