@@ -92,3 +92,5 @@ Actualmente, esta integración se encuentra ubicada en el footer como implementa
 - Mejoras de diseño responsive.
 - Mejoras de experiencia de usuario.
 - Optimización de la gestión de publicaciones y contenido guardado.
+
+#enlace https://l.facebook.com/l.php?u=https%3A%2F%2Fmoonlit-buttercream-377e10.netlify.app%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAcGRvZgVicmlkETE4ZXZmaVNqdDVQUVpQa3FQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh1-FLIafK8Sd8pzNLuotcJak5f6skv2mio7mEd4joyG4wuB1z-ci4P2ryxG_aem_GmxTGmPgnmW9k_kwh-7HbA&h=AUD0PV9M2NEElhTqKJuZlo2QmmV55OJ78cqOCsnjTM83iLq4TWpjO7N2w1HY8Y968B530vpXDdjI4YXB4EeIKTz_ihR1Ajh9vLfEQ2fLlnw-ckHSD5N2N1j_z_5sPYMhwth9Yg

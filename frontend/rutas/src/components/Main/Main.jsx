@@ -7,6 +7,7 @@ import CreatePostPopup from "../CreatePostPopup/CreatePostPopup";
 import Sidebar from "../Sidebar/Sidebar";
 import AnimeGallery from "../AnimeGalery/AnimeGalery";
 import { getPublicaciones, createPublicacion, delatePublicacion, updatePost} from "../../utils/Api";
+import { useSearchParams } from "react-router-dom";
 
 function Main() {
   const [activePopup, setActivePopup] = useState(null);
@@ -14,6 +15,13 @@ function Main() {
   const [activee, setActive] = useState(null);
 
   const [posts, setPosts] = useState([]); //se crea la memoria  donde se guarda el array
+
+  const [searchParams] = useSearchParams();
+
+const postId = searchParams.get("post");
+const postSeleccionado = posts.find(
+    (post) => String(post.id) === String(postId)
+);
  
    useEffect(() => {
     const cargarPublicaciones = async () => {
@@ -102,7 +110,7 @@ function Main() {
       <main className="main-layout">
         <div className="main-layout__feed">
           <CreatePost handlePopupCreatePost={handlePopupCreatePost} />
-          <Post posts={posts} onDeletePost={deletePost} updatePostMain={updatePostMain} />
+          <Post  onDeletePost={deletePost} updatePostMain={updatePostMain} posts={posts} />
         </div>
         <Sidebar />
         <AnimeGallery />

@@ -1,0 +1,230 @@
+/* =========================
+   GUARDADOS
+========================= */
+
+.guardados {
+    min-height: 100vh;
+    padding: 0 20px;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.guardados__main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.guardados__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    gap: 30px;
+}
+
+.guardados__titulo {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+}
+
+.guardados__texto {
+    margin: 8px 0 0;
+    color: #555;
+    font-size: 16px;
+}
+
+/* PARTE DERECHA */
+
+.guardados__texto-box-dos {
+    margin: 0;
+    color: #222;
+    font-size: 15px;
+}
+
+.guardados__btns {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* =========================
+   BOTONES GRID / FLEX
+========================= */
+
+.guardados__btn-grid,
+.guardados__btn-flex {
+    border: none;
+    padding: 10px 20px;
+
+    background-color: #f485c6;
+    color: #222;
+
+    border-radius: 10px;
+
+    box-shadow: 3px 4px 0 #000;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.guardados__btn-grid:hover,
+.guardados__btn-flex:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 6px 0 #000;
+}
+
+.guardados__btn-grid:active,
+.guardados__btn-flex:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #000;
+}
+
+/* =========================
+   PUBLICACIÓN GUARDADA
+========================= */
+
+.guardados__post {
+    width: 900px;
+    max-width: 100%;
+    display: flex;
+    margin: 0 auto 40px;
+    background-color: #fef0f0;
+    border-radius: 15px;
+    box-shadow: 5px 6px 0 #000;
+    overflow: hidden;
+    transition: 0.15s ease;
+}
+
+.guardados__post:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   IMAGEN
+========================= */
+
+.guardados__post-imagen {
+    width: 300px;
+    aspect-ratio: 14/10;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.guardados__post-caja {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex: 1;
+
+    padding: 25px;
+}
+
+.guardados__post-texto {
+    margin: 0;
+
+    color: #222;
+
+    font-size: 1rem;
+    line-height: 1.5;
+
+    word-wrap: break-word;
+}
+
+/* =========================
+   LIKE
+========================= */
+
+.guardado__post-like {
+    align-self: flex-start;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    background-color: #f485c6;
+
+    border-radius: 10px;
+
+    box-shadow: 3px 4px 0 #000;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+.guardado__post-like:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 6px 0 #000;
+}
+
+.guardado__post-like:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .guardados__heading {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 30px 0;
+    }
+
+    .guardados__titulo {
+        font-size: 24px;
+    }
+
+    .guardados__post {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .guardados__post-imagen {
+        width: 100%;
+        height: 250px;
+    }
+
+    .guardados__post-caja {
+        padding: 20px;
+    }
+
+    .guardados__btns {
+        width: 100%;
+    }
+
+    .guardados__btn-grid,
+    .guardados__btn-flex {
+        flex: 1;
+    }
+}
+
+.guardado__btn-ver {
+    background-color: #f485c6;
+    align-self: flex-start;
+    border: none;
+    padding: 10px 20px;
+    background-color: #f485c6;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0 #000;
+    cursor: pointer;
+    transition: 0.15s ease;
+}

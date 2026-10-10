@@ -1,4 +1,6 @@
 import { User, Home, Search, Heart, LogOut, PencilLine } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 function Nav() {
   return (
@@ -13,19 +15,19 @@ function Nav() {
 
       <ul className="nav__contenedor">
         <li className="nav__links">
-          <a href="#">
+          <Link to="/">
             <Home size={16} /> Home
-          </a>
+          </Link>
         </li>
         <li className="nav__links">
-          <a href="#">
+          <Link to="/Buscar">
             <Search size={16} /> Buscar
-          </a>
+          </Link>
         </li>
         <li className="nav__links">
-          <a href="#">
+          <Link to="/guardados">
             <Heart size={16} /> Guardados
-          </a>
+          </Link>
         </li>
       </ul>
 
