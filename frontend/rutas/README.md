@@ -1,96 +1,76 @@
 # 🌎 Social Travel App
 
-Aplicación web de estilo red social enfocada en compartir publicaciones, personalizar perfiles y descubrir contenido visual relacionado con viajes, lugares y experiencias.
+Aplicación web de estilo red social para compartir publicaciones, personalizar un perfil y descubrir contenido visual.
 
-## 📌 Descripción
+## Descripción
 
-La aplicación permite al usuario personalizar su perfil, crear publicaciones con texto e imágenes, interactuar con ellas y guardar contenido de interés.
+El proyecto está desarrollado con React y Vite. MockAPI proporciona almacenamiento temporal para publicaciones y elementos guardados. Los datos del perfil todavía se mantienen únicamente en el estado de React.
 
-El proyecto está desarrollado con **React** y utiliza **MockAPI** como servicio temporal para gestionar y almacenar los datos mediante diferentes endpoints.
+## Funcionalidades actuales
 
-## ✨ Funcionalidades
+### Perfil ff
 
-### 👤 Perfil de usuario
+- Abrir formularios emergentes para editar el nombre, la imagen de perfil, la descripción y la imagen del banner
+- Validar que las URLs de imagen usen HTTP o HTTPS y terminen en una extensión de imagen admitida.
+- Los cambios de perfil se conservan mientras la aplicación está abierta, pero todavía no se guardan en el servidor ni persisten al recargar la página.
 
-El usuario puede personalizar su perfil mediante formularios desplegados en pop-ups:
+### Publicaciones
 
-- Imagen de banner.
-- Imagen de perfil.
-- Nombre de usuario.
-- Descripción personal.
-- Imágenes de tableros relacionadas con sus gustos e intereses.
+- Consultar publicaciones desde MockAPI y crear publicaciones con texto e imagen.
+- Validar el texto de la publicación y la URL de la imagen antes de enviarla.
+- Abrir una imagen para verla junto con el texto de su publicación, expandir textos largos y eliminar publicaciones.
+- Guardar o quitar una publicación de la lista de guardados.
 
-### 📝 Publicaciones
+Las extensiones admitidas para las URLs de imagen son `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.avif`, `.bmp` y `.svg`. Se permiten parámetros en la URL después de la extensión.
 
-El usuario puede crear publicaciones mediante un formulario desplegado en un pop-up.
+### Publicaciones guardadas
 
-Cada publicación puede incluir:
+La sección **Guardados** ya está implementada y disponible desde la navegación en la ruta `/guardados`. Muestra las publicaciones guardadas y obtiene los datos de MockAPI. Guardar o quitar publicaciones también actualiza el endpoint de guardados.
 
-- Texto o descripción.
-- Imagen.
-- Likes.
-- Estado de guardado.
-- Opción para eliminar la publicación.
-- Sección de comentarios.
+### Búsqueda y contenido externo
 
-Las publicaciones se muestran en el feed principal y permiten al usuario interactuar con ellas.
+- La ruta `/Buscar` muestra la interfaz de búsqueda; sus resultados todavía son de ejemplo y la búsqueda real está pendiente.
+- La página principal muestra una galería de anime populares obtenida desde la API GraphQL de AniList. Esta galería no es la futura galería de imágenes del usuario.
 
-### 💾 Publicaciones guardadas
+## API y almacenamiento
 
-Las publicaciones marcadas como guardadas se almacenan en una sección independiente.
+MockAPI se usa actualmente para estas operaciones:
 
-El usuario podrá consultar posteriormente las publicaciones que haya guardado.
+| Recurso | Operaciones actuales | Datos |
+|---|---|---|
+| `/publicaciones` | GET, POST y DELETE por ID | Texto e imagen de cada publicación |
+| `/guardados` | GET, POST y DELETE por ID | Identificadores de las publicaciones guardadas |
 
-## 🔌 API y almacenamiento
+El perfil aún no cuenta con endpoints: nombre, descripción, imagen de perfil e imagen del banner se administran en `ProfileContext` en el cliente.
 
-Actualmente, la aplicación utiliza **MockAPI** para simular el backend y gestionar los datos mediante una API REST.
+## Tecnologías
 
-Se utilizan tres endpoints principales:
-
-| Endpoint | Datos gestionados |
-|---|---|
-| **Perfil** | Banner, imagen de perfil, nombre, descripción y tableros |
-| **Publicaciones** | Imagen, texto, likes y estado de guardado |
-| **Guardados** | Publicaciones guardadas por el usuario |
-
-Las operaciones de creación, actualización y eliminación de contenido se realizan mediante solicitudes HTTP a la API.
-
-### 🔮 Backend futuro
-
-MockAPI se utiliza actualmente como una solución temporal para simular la comunicación con un backend.
-
-Como parte de la evolución del proyecto, se planea reemplazar MockAPI por un **backend propio**, manteniendo la estructura de la API y trasladando la gestión de usuarios, publicaciones, comentarios y contenido guardado a un servidor propio.
-
-
-## 💬 Comentarios   z
-
-Se incorporará una sección de comentarios que se desplegará debajo de cada publicación, permitiendo visualizar e interactuar con los comentarios asociados a cada post.
-
-## 🌐 API de terceros
-
-Como parte de los requisitos del **Sprint 20**, el proyecto incorpora una API de terceros.
-
-Actualmente, esta integración se encuentra ubicada en el footer como implementación inicial. Como mejora futura, se planea trasladarla a una sección independiente dentro del menú de navegación para mostrar y renderizar el contenido proporcionado por dicha API.
-
-## 🛠️ Tecnologías
-
-- React
-- JavaScript
-- HTML5
-- CSS3
-- MockAPI
-- REST API
-- Git / GitHub
+- React y JavaScript
 - Vite
+- HTML y CSS
+- MockAPI (API REST)
+- AniList GraphQL
 
-## 🚀 Próximas mejoras
+## Ejecución local
 
-- Implementación completa de comentarios.
-- Integración de la API de terceros en una sección independiente.
-- Reemplazo de MockAPI por un backend propio.
-- Gestión de usuarios y autenticación.
-- Mejoras de diseño responsive.
-- Mejoras de experiencia de usuario.
-- Optimización de la gestión de publicaciones y contenido guardado.
+Desde la carpeta `frontend/rutas`:
 
-#enlace https://l.facebook.com/l.php?u=https%3A%2F%2Fmoonlit-buttercream-377e10.netlify.app%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAcGRvZgVicmlkETE4ZXZmaVNqdDVQUVpQa3FQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh1-FLIafK8Sd8pzNLuotcJak5f6skv2mio7mEd4joyG4wuB1z-ci4P2ryxG_aem_GmxTGmPgnmW9k_kwh-7HbA&h=AUD0PV9M2NEElhTqKJuZlo2QmmV55OJ78cqOCsnjTM83iLq4TWpjO7N2w1HY8Y968B530vpXDdjI4YXB4EeIKTz_ihR1Ajh9vLfEQ2fLlnw-ckHSD5N2N1j_z_5sPYMhwth9Yg
+```bash
+npm install
+npm run dev
+```
+
+Otros comandos disponibles:
+
+```bash
+npm run lint
+npm run build
+```
+
+## Próximas mejoras
+
+- Agregar endpoints de perfil para guardar y recuperar el nombre, la descripción, la imagen de perfil y la imagen del banner.
+- Crear una sección independiente de galería de imágenes.
+- Implementar la búsqueda real de publicaciones.
+- Incorporar comentarios e interacciones de likes.
+- Reemplazar MockAPI por un backend propio y agregar autenticación.

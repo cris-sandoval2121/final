@@ -26,7 +26,7 @@ function Nav() {
         </li>
         <li className="nav__links">
           <Link to="/guardados">
-            <Heart size={16} /> Guardados
+            <Heart className="nav__heart" size={16} /> Guardados
           </Link>
         </li>
       </ul>

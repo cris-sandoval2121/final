@@ -84,6 +84,11 @@
     color: #d146d8;
 }
 
+.nav__heart {
+    color: #e11d48;
+    fill: #e11d48;
+}
+
 .nav__links a::after {
     content: "";
     position: absolute;
