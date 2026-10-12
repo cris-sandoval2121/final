@@ -1,31 +1,39 @@
 import Nav from '../../components/Header/Nav/Nav'
 import { useState, useEffect } from "react";
-import { getPublicaciones } from '../../utils/Api';
+import { getPublicaciones, getGuardados } from '../../utils/Api';
 function Guardados() {
     const [guardados, setGuardados] = useState([]);
 
-    useEffect(()=>{
-        const cargarGuardados = async()=>{
+    useEffect(() => {
+        const cargarGuardados = async () => {
             try {
-                const data = await getPublicaciones();
-                setGuardados(data);
+                const guardadosData = await getGuardados();
+                const publicacionesData = await getPublicaciones();
+
+                const publicacionesGuardadas = publicacionesData.filter((post) =>
+                    guardadosData.some(
+                        (guardado) => guardado.publicacionId === post.id
+                    )
+                );
+
+                setGuardados(publicacionesGuardadas)
+
 
             } catch (error) {
                 console.error(error);
-                
             }
-        }
+        };
 
         cargarGuardados();
-    }, [])
+    }, []);
 
-    const guardadosFilter = guardados.filter((post) => post.guardado);
+    const guardadosFilter = guardados.filter((post) => post.id).sort((a, b) => b.id - a.id);
 
 
 
     return (
 
-        <div className="guardados">
+        <div className="page">
             <Nav />
 
             <main className="guardados">
@@ -46,29 +54,38 @@ function Guardados() {
                         </div>
                     </div>
 
+                </div>
+                <div className='her'>
+
+
+                    {guardadosFilter.map((posteo) => {
+
+                        const textoCorto = posteo.texto.length > 100 ? posteo.texto.slice(0, 190) + "..." : posteo.texto;
+
+
+
+                        return (
+
+                            <article className='guardados__post' key={posteo.id}>
+                                <img className='guardados__post-imagen' src={posteo.imagen} alt='imagen' />
+
+                                <div className='guardados__post-caja'>
+                                    <p className='guardados__post-texto'>{textoCorto}</p>
+
+                                    <div className='guardados__btn-box'>
+                                        <button className='guardado__post-like'>{posteo.like}Like</button>
+                                        <button className='guardado__btn-ver'>Ver post</button>
+                                        <button className='guardado__btn-borrar'>X</button>
+                                    </div>
+
+                                </div>
+
+                            </article>
+                        )
+
+                    })}
 
                 </div>
-
-                {guardadosFilter.map((posteo) => {
-
-                    const textoCorto = posteo.texto.length > 100 ? posteo.texto.slice(0, 190) + "..." : posteo.texto;
-
-
-
-                    return(
-                          <article className='guardados__post' key={posteo.id}>
-                        <img className='guardados__post-imagen' src={posteo.imagen} alt='imagen'/>
-
-                        <div className='guardados__post-caja'>
-                            <p className='guardados__post-texto'>{textoCorto}</p>
-                            <button className='guardado__post-like'>{posteo.like}Like</button>
-                        <button className='guardado__btn-ver'>Ver post</button>
-                        </div>
-
-                    </article>
-                    )
-                  
-                })};
             </main>
         </div>
     );

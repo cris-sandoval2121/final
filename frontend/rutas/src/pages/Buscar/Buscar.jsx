@@ -7,7 +7,7 @@ function Buscar() {
   
 
   return (
-    <section className="buscar">
+    <section className="buscar page">
 
         <Nav/>
       <div className="buscar__header">

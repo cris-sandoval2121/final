@@ -9,10 +9,11 @@
 @import './blocks/animegalery.css';
 @import './blocks/buscar.css';
 @import './blocks/guardados.css';
+@import './blocks/popupImagen.css';
 
 .page {
     max-width: 1450px;
-    width: 88%;
+    width: 90%;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -21,14 +22,10 @@ img {
     max-width: 100%;
 }
 
-/* .contenedor {
-    /* width: 100%; */
-    /* margin: 0 auto; */
-/* }  */
-
 .contenedordos {
-    max-width: 1000px;
-    /* width: 62%; */
+    max-width: 1450px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 body {

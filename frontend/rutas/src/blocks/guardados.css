@@ -228,3 +228,21 @@
     cursor: pointer;
     transition: 0.15s ease;
 }
+
+.guardados__btn-box{
+    display: flex;
+    gap: 20px;
+}
+
+.guardado__btn-borrar {
+ background-color: #f485c6;
+    align-self: flex-start;
+    border: none;
+    padding: 10px 20px;
+    background-color: #f485c6;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0 #000;
+    cursor: pointer;
+    transition: 0.15s ease;
+ 
+}

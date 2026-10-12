@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useProfile } from "../../contexts/profileContext.jsx";
 import { Trash2 } from "lucide-react";
 
-function Post({ posts, onDeletePost, updatePostMain }) {
+function Post({ posts, onDeletePost, postGuardados, Guardado, handlePopupImagen }) {
   const perfilDefault2 =
     "https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg";
 
   const { nombre, imagenPerfil } = useProfile();
+
+
+
 
   return (
     <div className="postCon contenedordos">
@@ -29,7 +32,9 @@ function Post({ posts, onDeletePost, updatePostMain }) {
           imagenPerfil={imagenPerfil}
           perfilDefault2={perfilDefault2}
           onDeletePost={onDeletePost}
-          updatePostMain={updatePostMain}
+          postGuardados={postGuardados}
+          Guardado={Guardado}
+          handlePopupImagen={handlePopupImagen}
         />
       ))}
 
@@ -38,7 +43,7 @@ function Post({ posts, onDeletePost, updatePostMain }) {
 }
 
 
-function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost,updatePostMain}) {
+function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost, postGuardados, Guardado, handlePopupImagen}) {
 
   const [mostrarCompleto, setMostrarCompleto] = useState(false);
 
@@ -50,6 +55,10 @@ function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost,up
     mostrarCompleto || !textoLargo
       ? post.texto
       : post.texto.slice(0, limit) + "...";
+
+      const estaGuardado = Guardado.some(
+  (guardado) => guardado.publicacionId === post.id
+);
 
 
   return (
@@ -80,6 +89,7 @@ function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost,up
           className="post__imagen"
           src={post.imagen}
           alt="Publicación"
+          onClick={()=>handlePopupImagen(post.imagen, post.texto)}
         />
 
       </div>
@@ -103,16 +113,8 @@ function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost,up
           </button>
 
 
-          <button
-            className={`post__boton ${post.guardado
-                ? "post__btn-guardado"
-                : ""
-              }`}
-            onClick={() =>
-              updatePostMain(post)
-            }
-          >
-            {post.guardado
+          <button className={`post__boton ${estaGuardado ? "post__btn-guardado" : ""}`} onClick={() => postGuardados(post.id)}>
+            {estaGuardado
               ? "Guardado"
               : "Guardar"}
           </button>

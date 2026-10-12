@@ -102,7 +102,7 @@ function PopupForm({ close, type }) {
                 <input
                   className="popup__input"
                   type="text"
-                  placeholder="Cris Sandoval"
+                  placeholder="Usuario:3"
                   value={nombreInput}
                   onChange={(e) => {
                     setNombreInput(e.target.value.slice(0, 60));

@@ -34,7 +34,7 @@ function Profile({ handlePopup }) {
 
              <img
         className="perfil__imagen"
-        src={imagenPerfil || perfilDeafault}
+        src={imagenPerfil || perfilDeafault} onClick={() => handlePopup("perfil")}
         alt="imagen de perfil"
       ></img>
         
