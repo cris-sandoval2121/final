@@ -1,20 +1,8 @@
 import { useState } from "react";
 import { useProfile } from "../../contexts/profileContext";
+import { isValidImageUrl } from "../../utils/imageUrlValidation.js";
 
 const MAX_PROFILE_DESCRIPTION_LENGTH = 80;
-
-function isOptionalHttpUrl(value) {
-  const trimmedValue = value.trim();
-  if (!trimmedValue) return true;
-  if (!/^https?:\/\//i.test(trimmedValue)) return false;
-
-  try {
-    const url = new URL(trimmedValue);
-    return url.protocol === "http:" || url.protocol === "https:";
-  } catch {
-    return false;
-  }
-}
 
 function PopupForm({ close, type }) {
   const {
@@ -45,9 +33,9 @@ function PopupForm({ close, type }) {
         setValidationError("El nombre debe tener entre 2 y 60 caracteres.");
         return;
       }
-      if (!isOptionalHttpUrl(imagenInput)) {
+      if (imagenInput.trim() && !isValidImageUrl(imagenInput)) {
         setValidationError(
-          "La imagen debe usar una URL válida con http:// o https://.",
+          "La imagen debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg.",
         );
         return;
       }
@@ -72,9 +60,9 @@ function PopupForm({ close, type }) {
     }
 
     if (type === "banner") {
-      if (!isOptionalHttpUrl(bannerInput)) {
+      if (bannerInput.trim() && !isValidImageUrl(bannerInput)) {
         setValidationError(
-          "El banner debe usar una URL válida con http:// o https://.",
+          "El banner debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg.",
         );
         return;
       }
@@ -118,7 +106,7 @@ function PopupForm({ close, type }) {
                   type="text"
                   inputMode="url"
                   placeholder="URL de la imagen"
-                  title="Ingresa una URL válida que comience con http:// o https://."
+                  title="La URL debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg."
                   value={imagenInput}
                   onChange={(e) => {
                     setImagenInput(e.target.value);
@@ -187,7 +175,7 @@ function PopupForm({ close, type }) {
                   type="text"
                   inputMode="url"
                   placeholder="URL del banner"
-                  title="Ingresa una URL válida que comience con http:// o https://."
+                  title="La URL debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg."
                   value={bannerInput}
                   onChange={(e) => {
                     setBannerInput(e.target.value);

@@ -96,7 +96,7 @@ function Main() {
       // Si ya esta guardado → eliminarlo
       if (guardadoExistente) {
         await deleteGuardado(guardadoExistente.id); // "ojo" id de guuardado no de la publicacion 
-        
+
         setGuardados((prevGuardados) =>
           prevGuardados.filter(
             (guardado) => guardado.id !== guardadoExistente.id, // todos los guardados ecepto el eliminado
@@ -119,8 +119,6 @@ function Main() {
 
   function handlePopupImagen(imagen, texto) {
     setActivePopupImagen({ imagen, texto });
-    console.log(activePopupImagen)
-
   }
 
   function handlePopupCreatePost(popup) {

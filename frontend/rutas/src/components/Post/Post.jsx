@@ -56,6 +56,9 @@ function PostIndividual({post,nombre,imagenPerfil,perfilDefault2,onDeletePost, p
       ? post.texto
       : post.texto.slice(0, limit) + "...";
 
+      console.log("POST:", post);
+console.log("GUARDADOS:", Guardado);
+
       const estaGuardado = Guardado.some(
   (guardado) => guardado.publicacionId === post.id
 );

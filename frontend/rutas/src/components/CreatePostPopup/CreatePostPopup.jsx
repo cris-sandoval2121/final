@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isValidImageUrl } from "../../utils/imageUrlValidation.js";
 
 const MAX_POST_TEXT_LENGTH = 2000;
 
@@ -25,17 +26,9 @@ function CreatePostPopup({ close, postTextConect }) {
       return;
     }
 
-    try {
-      if (!/^https?:\/\//i.test(imageUrl)) {
-        throw new Error("URL no compatible");
-      }
-      const parsedUrl = new URL(imageUrl);
-      if (!["http:", "https:"].includes(parsedUrl.protocol)) {
-        throw new Error("URL no compatible");
-      }
-    } catch {
+    if (!isValidImageUrl(imageUrl)) {
       setValidationError(
-        "Ingresa una URL de imagen válida que comience con http:// o https://.",
+        "La URL debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg.",
       );
       return;
     }
@@ -76,7 +69,7 @@ function CreatePostPopup({ close, postTextConect }) {
             type="text"
             inputMode="url"
             placeholder="Pega la URL de tu imagen..."
-            title="Ingresa una URL válida que comience con http:// o https://."
+            title="La URL debe terminar en .jpg, .jpeg, .png, .webp, .gif, .avif, .bmp o .svg."
             value={createPostImagenInput}
             onChange={(e) => {
               setCreatePostImagenInput(e.target.value);

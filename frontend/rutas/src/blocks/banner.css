@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 100%;
     position: relative;
+    /* z-index: -1; */
 }
 
 .banner__imagen {
