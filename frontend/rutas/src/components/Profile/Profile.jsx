@@ -19,8 +19,8 @@ function Profile({ handlePopup }) {
     sobreMi,
   } = useProfile();
 
-  const perfilDeafault = 'https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg';
-  const Namedeafault = 'Usuario';
+  // const perfilDeafault = 'https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg';
+  // const Namedeafault = 'Usuario';
   const sobreMideafault = 'Me gusta tomar fotografias y viajar...';
   return (
 
@@ -34,7 +34,7 @@ function Profile({ handlePopup }) {
 
              <img
         className="perfil__imagen"
-        src={imagenPerfil || perfilDeafault} onClick={() => handlePopup("perfil")}
+        src={imagenPerfil } onClick={() => handlePopup("perfil")}
         alt="imagen de perfil"
       ></img>
         
@@ -46,8 +46,8 @@ function Profile({ handlePopup }) {
 
       
       <div className="perfil__card">
-        <h1 className="perfil__nombre">{nombre || Namedeafault}</h1>
-        <p className="perfil__descrip">{sobreMi || sobreMideafault}</p>
+        <h1 className="perfil__nombre">{nombre }</h1>
+        <p className="perfil__descrip">{sobreMi || sobreMideafault }</p>
       </div>
 
       
