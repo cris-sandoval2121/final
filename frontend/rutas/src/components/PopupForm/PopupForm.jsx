@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProfile } from "../../contexts/profileContext";
 import { isValidImageUrl } from "../../utils/imageUrlValidation.js";
 
@@ -23,6 +23,15 @@ function PopupForm({ close, type }) {
   const [bannerInput, setBannerInput] = useState(bannerImagen);
   const [sobremiInput, setSobreMiInput] = useState(sobreMi);
   const [validationError, setValidationError] = useState("");
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") close();
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [close]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -74,9 +83,19 @@ function PopupForm({ close, type }) {
   }
 
   return (
-    <div className="popup">
-      <div className="popup__container">
-        <button className="popup__close" onClick={close}>
+    <div
+      className="popup"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
+      <div className="popup__container" role="dialog" aria-modal="true">
+        <button
+          className="popup__close"
+          type="button"
+          aria-label="Cerrar ventana"
+          onClick={close}
+        >
           ✕
         </button>
 

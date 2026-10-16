@@ -59,6 +59,7 @@
 
 .post__usuario {
     padding: 15px 20px;
+    position: relative;
 }
 
 .post__usuario-info {
@@ -89,8 +90,9 @@
     overflow: hidden;
     display: block;
     width: 100%;
-    /* aspect-ratio: 16/9; */
+    /* aspect-ratio: 5/16; */
     object-fit: cover;
+    /* object-position: 100% 30%; */
     max-height: 500px;
 }
 
@@ -261,4 +263,24 @@
 .post__read-more:hover {
   color: #d63384;
   text-decoration: underline;
+}
+
+.post__seguardo{
+     position: absolute;
+    top: 0px;
+    right: 0;
+    background-color: #ff0101;
+    overflow: hidden;
+    height: 200px;
+    
+    
+    
+    color: white;
+    border: none;
+    transition: all 0.40s;
+    height:50px;
+}
+
+.post__seguardo:hover{
+    height: 80px;
 }

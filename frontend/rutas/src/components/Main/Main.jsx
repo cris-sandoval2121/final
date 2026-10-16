@@ -16,9 +16,11 @@ import {
   posrGuardadosId,
   deleteGuardado,
 } from "../../utils/Api";
-// import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Main() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activePopup, setActivePopup] = useState(null);
 
   const [activee, setActive] = useState(null);
@@ -26,6 +28,27 @@ function Main() {
 
   const [posts, setPosts] = useState([]); //se crea la memoria  donde se guarda el array
   const [Guardado, setGuardados] = useState([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingGuardando, setIsLoadingGuardando] = useState(null);
+  const [isLoadingBorrando, setIsLoadingBorrando] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!posts.length || !location.hash) return;
+
+    const postId = decodeURIComponent(location.hash.slice(1));
+    const elemento = document.getElementById(postId);
+
+    if (!elemento) return;
+
+    elemento.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    navigate(`${location.pathname}${location.search}`, { replace: true });
+  }, [posts, location.hash, location.pathname, location.search, navigate]);
 
   useEffect(() => {
     const cargarGuardadosBtn = async () => {
@@ -41,12 +64,16 @@ function Main() {
 
   useEffect(() => {
     const cargarPublicaciones = async () => {
+      setError("");
+      setIsLoading(true);
       try {
         const data = await getPublicaciones();
 
         setPosts([...data].reverse());
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -77,6 +104,7 @@ function Main() {
   };
 
   const deletePost = async (id) => {
+    setIsLoadingBorrando(id);
     try {
       await delatePublicacion(id);
       setPosts((previousPosts) =>
@@ -84,18 +112,21 @@ function Main() {
       );
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoadingBorrando(null);
     }
   };
 
   const postGuardados = async (publicacionId) => {
     const guardadoExistente = Guardado.find(
       (guardado) => guardado.publicacionId === publicacionId,
-     ); //compara entre el mismo si, y guarda
+    ); //compara entre el mismo si, y guarda
+    setIsLoadingGuardando(publicacionId);
 
     try {
       // Si ya esta guardado → eliminarlo
       if (guardadoExistente) {
-        await deleteGuardado(guardadoExistente.id); // "ojo" id de guuardado no de la publicacion 
+        await deleteGuardado(guardadoExistente.id); // "ojo" id de guuardado no de la publicacion
 
         setGuardados((prevGuardados) =>
           prevGuardados.filter(
@@ -114,6 +145,8 @@ function Main() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoadingGuardando(null);
     }
   };
 
@@ -132,8 +165,10 @@ function Main() {
   function close() {
     setActivePopup(null);
     setActive(null);
-    setActivePopupImagen(null)
+    setActivePopupImagen(null);
   }
+
+  const publicacionesCuenta = posts.length;
 
   return (
     <>
@@ -148,15 +183,18 @@ function Main() {
             posts={posts}
             postGuardados={postGuardados}
             Guardado={Guardado}
+            isLoading={isLoading}
+            error={error}
+            isLoadingGuardando={isLoadingGuardando}
+            isLoadingBorrando={isLoadingBorrando}
           />
         </div>
-        <Sidebar />
-        <AnimeGallery />
+        <Sidebar publicacionesCuenta={publicacionesCuenta} />
+        {/* <AnimeGallery /> */}
         {/* <PopupImagen/> */}
       </main>
 
       {activePopup && <PopupForm close={close} type={activePopup} />}
-
 
       {activePopupImagen && (
         <PopupImagen activePopupImagen={activePopupImagen} close={close} />

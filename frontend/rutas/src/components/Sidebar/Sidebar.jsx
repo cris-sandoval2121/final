@@ -3,11 +3,11 @@ import FeaturedPhotos from "./FeaturedPhotos";
 import Statistics from "./Statistics";
 import "./Sidebar.css";
 
-function Sidebar() {
+function Sidebar({ publicacionesCuenta }) {
   return (
     <aside className="sidebar" aria-label="Información del perfil">
       <AboutMe />
-      <Statistics />
+      <Statistics publicacionesCuenta={publicacionesCuenta} />
       <FeaturedPhotos />
     </aside>
   );

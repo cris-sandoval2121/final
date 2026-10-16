@@ -9,7 +9,10 @@
 @import './blocks/animegalery.css';
 @import './blocks/buscar.css';
 @import './blocks/guardados.css';
+@import './blocks/galeria.css';
 @import './blocks/popupImagen.css';
+@import "./blocks/loader.css";
+@import "./blocks/error.css";
 
 .page {
     max-width: 1450px;

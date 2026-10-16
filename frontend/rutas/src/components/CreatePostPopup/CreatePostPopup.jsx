@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { LoaderCircle } from "lucide-react";
 import { isValidImageUrl } from "../../utils/imageUrlValidation.js";
 
 const MAX_POST_TEXT_LENGTH = 2000;
@@ -7,8 +8,18 @@ function CreatePostPopup({ close, postTextConect }) {
   const [createPostInput, setCreatePostInput] = useState("");
   const [createPostImagenInput, setCreatePostImagenInput] = useState("");
   const [validationError, setValidationError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(e) {
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") close();
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [close]);
+
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const postText = createPostInput.trim();
@@ -34,20 +45,29 @@ function CreatePostPopup({ close, postTextConect }) {
     }
 
     setValidationError("");
-    postTextConect(postText, imageUrl);
-
-    close();
+    setIsLoading(true);
+    try {
+      await postTextConect(postText, imageUrl);
+      close();
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <div className="popup">
       <div className="popup__overlay" onClick={close}></div>
 
-      <div className="popup__container">
+      <div className="popup__container" role="dialog" aria-modal="true">
         <div className="popup__header">
           <h2 className="popup__title">Crear publicación</h2>
 
-          <button className="popup__close" type="button" onClick={close}>
+          <button
+            className="popup__close"
+            type="button"
+            aria-label="Cerrar publicación"
+            onClick={close}
+          >
             ×
           </button>
         </div>
@@ -84,8 +104,12 @@ function CreatePostPopup({ close, postTextConect }) {
           )}
 
           <div className="popup__bottom">
-            <button className="popup__publish" type="submit">
-              Publicar
+            <button
+              className="popup__publish"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? <LoaderCircle /> : "Publicar"}
             </button>
           </div>
         </form>

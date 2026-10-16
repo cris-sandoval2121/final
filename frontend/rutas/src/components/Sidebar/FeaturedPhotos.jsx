@@ -28,7 +28,7 @@ function FeaturedPhotos() {
     <section className="sidebar__card" aria-labelledby="featured-photos-title">
       <div className="sidebar__card-heading">
         <h2 className="sidebar__title" id="featured-photos-title">
-          Fotos destacadas
+          Galeria
         </h2>
         <button className="sidebar__text-button" type="button">
           Ver todas

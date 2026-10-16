@@ -117,3 +117,26 @@
     font-size: 1rem;
     outline: none;
 }
+
+.popup__guardar-perfil {
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #f485c6;
+    color: #222;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 3px 4px 0 #000;
+    transition: 0.15s ease;
+}
+
+.popup__guardar-perfil:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 6px 0 #000;
+}
+
+.popup__guardar-perfil:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #000;
+}

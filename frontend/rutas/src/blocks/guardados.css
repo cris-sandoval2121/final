@@ -44,12 +44,23 @@
 
 .guardados__texto-box-dos {
     margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 16px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #fef0f0;
     color: #222;
-    font-size: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 4px 5px 0 #000;
 }
 
 .guardados__btns {
     display: flex;
+    justify-content: flex-end;
     gap: 12px;
     margin-top: 12px;
 }
@@ -101,11 +112,14 @@
     box-shadow: 5px 6px 0 #000;
     overflow: hidden;
     transition: 0.15s ease;
+    /* z-index: -12; */
+    position: relative;
+
 }
 
-.guardados__post:hover {
+/* .guardados__post:hover {
     transform: translateY(-2px);
-}
+} */
 
 /* =========================
    IMAGEN
@@ -117,6 +131,8 @@
     height: auto;
     object-fit: cover;
     flex-shrink: 0;
+
+
 }
 
 /* =========================
@@ -131,6 +147,7 @@
     flex: 1;
 
     padding: 25px;
+
 }
 
 .guardados__post-texto {
@@ -142,6 +159,7 @@
     line-height: 1.5;
 
     word-wrap: break-word;
+    padding: 0 5px 10px;
 }
 
 /* =========================
@@ -180,13 +198,14 @@
    RESPONSIVE
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
 
     .guardados__heading {
         flex-direction: column;
         align-items: flex-start;
         margin: 30px 0;
     }
+
 
     .guardados__titulo {
         font-size: 24px;
@@ -215,6 +234,27 @@
     .guardados__btn-flex {
         flex: 1;
     }
+
+    .guardado__btn {
+        position: absolute;
+        top: 0;
+        background-color: #ff24a4;
+
+        color: white;
+        border: none;
+        opacity: 0.7;
+        transition: all 0.40s;
+        height: 10px;
+
+    }
+
+    .guardados__post:hover .guardado__btn {
+        transform: scale(1.2);
+        background-color: red;
+        opacity: 1;
+        height: 10px;
+        transition: all 0.40s;
+    }
 }
 
 .guardado__btn-ver {
@@ -229,20 +269,57 @@
     transition: 0.15s ease;
 }
 
-.guardados__btn-box{
+.guardados__btn-box {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
     gap: 20px;
+    align-items: center;
 }
 
 .guardado__btn-borrar {
- background-color: #f485c6;
+    background-color: #f485c6;
     align-self: flex-start;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 30px;
     background-color: #f485c6;
     border-radius: 10px;
     box-shadow: 3px 4px 0 #000;
     cursor: pointer;
     transition: 0.15s ease;
- 
+
+}
+
+
+.grid-container {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto, auto);
+    gap: 20px;
+    /* justify-content: center; */
+
+}
+
+
+.guardado__btn {
+    position: absolute;
+    top: 0;
+    background-color: #ff24a4;
+
+    color: white;
+    border: none;
+    opacity: 0.7;
+    transition: all 0.40s;
+    height: 40px;
+
+}
+
+.guardados__post:hover .guardado__btn {
+    transform: scale(1.2);
+    background-color: red;
+    opacity: 1;
+    height: 200px;
+    transition: all 0.40s;
 }
