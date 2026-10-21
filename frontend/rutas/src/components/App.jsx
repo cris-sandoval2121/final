@@ -9,26 +9,26 @@ import Buscar from "../pages/Buscar/Buscar.jsx";
 import Galeria from "../pages/Galeria/Galeria.jsx";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="page">
-              <Main />
-            </div>
-          }
-        />
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <div className="page">
+                            <Main />
+                        </div>
+                    }
+                />
 
-        <Route path="/guardados" element={<Guardados />} />
+                <Route path="/guardados" element={<Guardados />} />
 
-        <Route path="/buscar" element={<Buscar />} />
+                <Route path="/buscar" element={<Buscar />} />
 
-        <Route path="/galeria" element={<Galeria />} />
-      </Routes>
-    </BrowserRouter>
-  );
+                <Route path="/galeria" element={<Galeria />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
