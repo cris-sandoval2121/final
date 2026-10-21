@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  User,
-  Home,
-  Search,
-  Bookmark,
-  Images,
-  Moon,
-  Sun,
-} from "lucide-react";
+import { User, Home, Search, Bookmark, Images, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const THEME_STORAGE_KEY = "rutas-theme";
