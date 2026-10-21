@@ -16,6 +16,12 @@
     overflow: hidden;
 }
 
+.banner__loading {
+    display: grid;
+    min-height: clamp(320px, 36vw, 470px);
+    place-items: center;
+}
+
 .banner__btn {
     position: absolute;
     top: -10px;

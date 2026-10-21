@@ -284,3 +284,14 @@
 .post__seguardo:hover{
     height: 80px;
 }
+
+.post__boton-likeado{
+      border: none;
+    padding: 10px 20px;
+    background-color: #fc0093;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0 #000;
+    cursor: pointer;
+    transition: 0.15s ease;
+    
+}

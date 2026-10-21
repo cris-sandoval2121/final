@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { useProfile } from "../../contexts/profileContext.jsx";
 
-function PopupImagen({ close, activePopupImagen }) {
-  const { nombre, imagenPerfil } = useProfile();
+function PopupImagen({ close, activePopupImagen, perfil }) {
+  const nombre = perfil?.nombre || "Usuario";
+  const imagenPerfil =
+    perfil?.avatar ||
+    "https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg";
 
   useEffect(() => {
     function handleKeyDown(event) {

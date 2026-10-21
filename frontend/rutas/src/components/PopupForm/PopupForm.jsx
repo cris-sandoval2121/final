@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
-import { useProfile } from "../../contexts/profileContext";
 import { isValidImageUrl } from "../../utils/imageUrlValidation.js";
 
 const MAX_PROFILE_DESCRIPTION_LENGTH = 80;
 
-function PopupForm({ close, type }) {
-  const {
-    nombre,
-    setNombre,
-    imagenPerfil,
-    setImagenPerfil,
-    bannerImagen,
-    setBannerImagen,
-    sobreMi,
-    setSobreMi,
-  } = useProfile();
-
+function PopupForm({
+  close,
+  type,
+  perfil,
+  isProfileLoaded,
+  profileLoadError,
+  subirPerfil,
+}) {
   // Estados temporales del formulario
-  const [nombreInput, setNombreInput] = useState(nombre);
-  const [imagenInput, setImagenInput] = useState(imagenPerfil);
-
-  const [bannerInput, setBannerInput] = useState(bannerImagen);
-  const [sobremiInput, setSobreMiInput] = useState(sobreMi);
+  const [nombreInput, setNombreInput] = useState(perfil?.nombre || "Usuario");
+  const [imagenInput, setImagenInput] = useState(
+    perfil?.avatar ||
+      "https://i.pinimg.com/736x/19/c5/3c/19c53c3030d61e2730fe81eae112049d.jpg",
+  );
+  const [bannerInput, setBannerInput] = useState(
+    perfil?.banner ||
+      "https://i.pinimg.com/originals/c7/1f/1c/c71f1cd83ea73ab458eabe8fed20687f.gif",
+  );
+  const [sobremiInput, setSobreMiInput] = useState(perfil?.description || "");
   const [validationError, setValidationError] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -33,7 +34,7 @@ function PopupForm({ close, type }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [close]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (type === "perfil") {
@@ -48,9 +49,6 @@ function PopupForm({ close, type }) {
         );
         return;
       }
-
-      setNombre(trimmedName);
-      setImagenPerfil(imagenInput.trim());
     }
 
     if (type === "description") {
@@ -64,8 +62,6 @@ function PopupForm({ close, type }) {
         );
         return;
       }
-
-      setSobreMi(trimmedDescription);
     }
 
     if (type === "banner") {
@@ -75,11 +71,29 @@ function PopupForm({ close, type }) {
         );
         return;
       }
-
-      setBannerImagen(bannerInput.trim());
     }
 
-    close();
+    if (!isProfileLoaded) {
+      setValidationError(
+        profileLoadError || "Espera a que termine la carga del perfil.",
+      );
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      await subirPerfil(
+        nombreInput.trim(),
+        imagenInput.trim(),
+        sobremiInput.trim(),
+        bannerInput.trim(),
+      );
+      close();
+    } catch (error) {
+      setValidationError(error.message || "No se pudo guardar el perfil.");
+    } finally {
+      setIsSaving(false);
+    }
   }
 
   return (
@@ -98,6 +112,12 @@ function PopupForm({ close, type }) {
         >
           ✕
         </button>
+
+        {profileLoadError && (
+          <p className="popup__validation-error" role="alert">
+            {profileLoadError}
+          </p>
+        )}
 
         {type === "perfil" && (
           <>
@@ -139,7 +159,11 @@ function PopupForm({ close, type }) {
                   {validationError}
                 </p>
               )}
-              <button className="popup__guardar-perfil" type="submit">
+              <button
+                className="popup__guardar-perfil"
+                type="submit"
+                disabled={isSaving || !isProfileLoaded}
+              >
                 Guardar
               </button>
             </form>
@@ -175,7 +199,11 @@ function PopupForm({ close, type }) {
                   {validationError}
                 </p>
               )}
-              <button className="popup__guardar-perfil" type="submit">
+              <button
+                className="popup__guardar-perfil"
+                type="submit"
+                disabled={isSaving || !isProfileLoaded}
+              >
                 Guardar
               </button>
             </form>
@@ -207,7 +235,11 @@ function PopupForm({ close, type }) {
                   {validationError}
                 </p>
               )}
-              <button className="popup__guardar-perfil" type="submit">
+              <button
+                className="popup__guardar-perfil"
+                type="submit"
+                disabled={isSaving || !isProfileLoaded}
+              >
                 Guardar
               </button>
             </form>

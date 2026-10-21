@@ -1,0 +1,177 @@
+html[data-theme="dark"] {
+    color-scheme: dark;
+    background: #17141b;
+}
+
+html[data-theme="dark"] body {
+    background: #17141b;
+    color: #f3edf4;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] p,
+html[data-theme="dark"] label {
+    color: #f3edf4;
+}
+
+html[data-theme="dark"] .nav {
+    background-color: #25202b;
+    border-color: #55495b;
+}
+
+html[data-theme="dark"] .nav__links a,
+html[data-theme="dark"] .nav__theme-toggle {
+    color: #ead9ef;
+}
+
+html[data-theme="dark"] .nav__links a:hover {
+    color: #f0a9d2;
+}
+
+html[data-theme="dark"] .nav__links a::after {
+    background-color: #e89acb;
+}
+
+html[data-theme="dark"] .nav__theme-toggle {
+    background: #393142;
+    border-color: #65566e;
+}
+
+html[data-theme="dark"] .nav__theme-toggle:hover {
+    background: #4b3e55;
+}
+
+html[data-theme="dark"] .perfil,
+html[data-theme="dark"] .post,
+html[data-theme="dark"] .sidebar__card,
+html[data-theme="dark"] .guardados__post,
+html[data-theme="dark"] .buscar__resultado,
+html[data-theme="dark"] .anime-gallery,
+html[data-theme="dark"] .popup__container,
+html[data-theme="dark"] .popup-imagen {
+    color: #f3edf4;
+    background-color: #28232e;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .perfil__imagen,
+html[data-theme="dark"] .post__usuario-imagen {
+    border-color: #393240;
+}
+
+html[data-theme="dark"] .perfil__nombre,
+html[data-theme="dark"] .perfil__descrip,
+html[data-theme="dark"] .post__usuario-nombre,
+html[data-theme="dark"] .post__comentario,
+html[data-theme="dark"] .sidebar__title,
+html[data-theme="dark"] .sidebar__description,
+html[data-theme="dark"] .sidebar__detail,
+html[data-theme="dark"] .sidebar__statistic-value,
+html[data-theme="dark"] .sidebar__statistic-label,
+html[data-theme="dark"] .guardados__titulo,
+html[data-theme="dark"] .guardados__texto,
+html[data-theme="dark"] .guardados__post-texto,
+html[data-theme="dark"] .buscar__titulo,
+html[data-theme="dark"] .buscar__contenido h2,
+html[data-theme="dark"] .buscar__contenido p,
+html[data-theme="dark"] .buscar__datos,
+html[data-theme="dark"] .popup__title,
+html[data-theme="dark"] .popup__label,
+html[data-theme="dark"] .popup__usuario-perfil-nombre,
+html[data-theme="dark"] .popup__descrip,
+html[data-theme="dark"] .anime-gallery__title,
+html[data-theme="dark"] .anime-card__title,
+html[data-theme="dark"] .anime-card__metadata,
+html[data-theme="dark"] .gallery__title,
+html[data-theme="dark"] .gallery__subtitle,
+html[data-theme="dark"] .gallery__empty,
+html[data-theme="dark"] .gallery__empty h2,
+html[data-theme="dark"] .gallery__label {
+    color: #f3edf4;
+}
+
+html[data-theme="dark"] .post::-webkit-scrollbar-track,
+html[data-theme="dark"] .post::-webkit-scrollbar-thumb {
+    border-color: #28232e;
+}
+
+html[data-theme="dark"] .post,
+html[data-theme="dark"] .post:hover {
+    scrollbar-color: #76627e #28232e;
+}
+
+html[data-theme="dark"] .create-post,
+html[data-theme="dark"] .gallery__count,
+html[data-theme="dark"] .gallery__item,
+html[data-theme="dark"] .guardados__texto-box-dos {
+    color: #f3edf4;
+    background-color: #28232e;
+    border-color: #55495b;
+}
+
+html[data-theme="dark"] .create-post__input,
+html[data-theme="dark"] .create-post__action,
+html[data-theme="dark"] .buscar__barra,
+html[data-theme="dark"] .buscar__imagen--vacia,
+html[data-theme="dark"] .gallery__input,
+html[data-theme="dark"] .gallery__preview,
+html[data-theme="dark"] .popup__input,
+html[data-theme="dark"] .popup__input-banner,
+html[data-theme="dark"] .popup__image-url,
+html[data-theme="dark"] .popup__textarea {
+    color: #f3edf4;
+    background-color: #211d27;
+    border-color: #514657;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #b6aabc;
+}
+
+html[data-theme="dark"] .buscar__contenido p,
+html[data-theme="dark"] .buscar__datos,
+html[data-theme="dark"] .popup__character-count {
+    color: #c7b9cb;
+}
+
+html[data-theme="dark"] .anime-card {
+    color: #f3edf4;
+    background-color: #211d27;
+    border-color: #514657;
+    box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .anime-card__genres li {
+    color: #f0c8df;
+    background: #4a3045;
+}
+
+html[data-theme="dark"] .gallery__empty {
+    border-color: #8c6b8d;
+}
+
+html[data-theme="dark"] .popup__container {
+    border-color: #5b4d63;
+}
+
+html[data-theme="dark"] .popup__close {
+    color: #f3edf4;
+    background-color: #44364a;
+}
+
+html[data-theme="dark"] .popup__button_cancel {
+    color: #f3edf4;
+    background-color: #393240;
+}
+
+html[data-theme="dark"] .popup__image-container {
+    background-color: #211d27;
+}
+
+html[data-theme="dark"] .popup__remove-image,
+html[data-theme="dark"] .gallery__remove-button {
+    color: #211d27;
+}

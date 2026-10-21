@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useProfile } from "../../contexts/profileContext.jsx";
-import { Trash2, Bookmark, LoaderCircle } from "lucide-react";
+import { Trash2, Bookmark, LoaderCircle, MessageCircleHeart, Heart } from "lucide-react";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 
 function Post({
+  perfil,
   posts,
   onDeletePost,
   postGuardados,
@@ -14,11 +14,16 @@ function Post({
   isLoading,
   isLoadingGuardando,
   isLoadingBorrando,
+  onLike,
+  isLoadingLike
 }) {
   const perfilDefault2 =
-    "https://i.pinimg.com/736x/f1/f4/70/f1f47023de6ab6a5c2dc37a6853c0f24.jpg";
+    "https://i.pinimg.com/736x/37/a6/2f/37a62f1efd07210aee6cf44312f08a95.jpg";
 
-  const { nombre, imagenPerfil } = useProfile();
+  const nombre = perfil?.nombre || "Usuario";
+  const imagenPerfil = perfil?.avatar;
+
+
 
   return (
     <div className="postCon contenedordos">
@@ -46,9 +51,11 @@ function Post({
             postGuardados={postGuardados}
             Guardado={Guardado}
             handlePopupImagen={handlePopupImagen}
-            isLoading={isLoading}
             isLoadingGuardando={isLoadingGuardando}
             isLoadingBorrando={isLoadingBorrando}
+            onLike={onLike}
+            isLoading={isLoading}
+            isLoadingLike={isLoadingLike}
           />
         ))
       )}
@@ -65,9 +72,12 @@ function PostIndividual({
   postGuardados,
   Guardado,
   handlePopupImagen,
-  isLoading,
   isLoadingGuardando,
   isLoadingBorrando,
+  onLike,
+  isLoading,
+  isLoadingLike
+
 }) {
   const [mostrarCompleto, setMostrarCompleto] = useState(false);
   const navigate = useNavigate();
@@ -137,7 +147,26 @@ function PostIndividual({
         </p>
 
         <div className="post__acciones">
-          <button className="post__boton">Likes</button>
+
+          {isLoadingLike === post.id ? (
+            <LoaderCircle className="post__like-loader" />
+          ) : (
+            <button
+              className={
+                post.likes ? "post__boton-likeado" : "post__boton"
+              }
+              type="button"
+              disabled={isLoadingLike !== null}
+              onClick={() => onLike(post)}
+              aria-label={post.likes ? "Quitar me gusta" : "Dar me gusta"}
+            >
+              <MessageCircleHeart />
+            </button>
+          )}
+
+
+
+
 
           <button
             className={`post__boton ${estaGuardado ? "post__btn-guardado" : ""}`}
