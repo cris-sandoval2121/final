@@ -1,10 +1,13 @@
+
+function Statistics({publicacionesCuenta}) {
+
 const statistics = [
-  { value: "12", label: "Publicaciones" },
-  { value: "248", label: "Seguidores" },
-  { value: "180", label: "Siguiendo" },
+  { value: publicacionesCuenta, label: "Publicaciones" },
+  { value: "0", label: "Seguidores" },
+  { value: "0", label: "Siguiendo" },
 ];
 
-function Statistics() {
+
   return (
     <section className="sidebar__card" aria-labelledby="statistics-title">
       <h2 className="sidebar__title" id="statistics-title">

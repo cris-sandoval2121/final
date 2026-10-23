@@ -1,96 +1,138 @@
-# 🌎 Social Travel App
+# 🌎 Rutas — Social Travel App
 
-Aplicación web de estilo red social enfocada en compartir publicaciones, personalizar perfiles y descubrir contenido visual relacionado con viajes, lugares y experiencias.
+**Rutas** es una aplicación web desarrollada con React que combina funciones de una red social con la posibilidad de descubrir contenido visual, buscar animes, personalizar un perfil e interactuar con publicaciones.
 
-## 📌 Descripción
+## Descripción
 
-La aplicación permite al usuario personalizar su perfil, crear publicaciones con texto e imágenes, interactuar con ellas y guardar contenido de interés.
+El proyecto está desarrollado con React y Vite. Actualmente utiliza MockAPI como API REST para gestionar publicaciones, elementos guardados y datos del perfil. También integra AniList para buscar animes y mostrar contenido relacionado.
 
-El proyecto está desarrollado con **React** y utiliza **MockAPI** como servicio temporal para gestionar y almacenar los datos mediante diferentes endpoints.
+La aplicación incorpora funcionalidades de interacción con publicaciones, navegación entre secciones y personalización del perfil. Algunas características, como la galería personal, todavía utilizan almacenamiento local en el navegador.
 
-## ✨ Funcionalidades
+## Funcionalidades actuales
 
 ### 👤 Perfil de usuario
 
-El usuario puede personalizar su perfil mediante formularios desplegados en pop-ups:
+- Editar el nombre del usuario.
+- Cambiar la imagen de perfil.
+- Actualizar la descripción del perfil.
+- Cambiar la imagen del banner.
+- Guardar y recuperar los datos del perfil mediante endpoints de la API.
+- Utilizar los datos obtenidos del endpoint para mostrar el nombre y la imagen de perfil en los diferentes componentes de la aplicación.
 
-- Imagen de banner.
-- Imagen de perfil.
-- Nombre de usuario.
-- Descripción personal.
-- Imágenes de tableros relacionadas con sus gustos e intereses.
+La gestión del perfil ya no depende de `useContext` para compartir el nombre y la imagen de perfil entre los distintos campos de la página. Estos datos se gestionan mediante las solicitudes a los endpoints correspondientes.
 
 ### 📝 Publicaciones
 
-El usuario puede crear publicaciones mediante un formulario desplegado en un pop-up.
+- Consultar publicaciones desde MockAPI.
+- Crear publicaciones con texto e imagen.
+- Validar el contenido y la URL de la imagen antes de crear una publicación.
+- Abrir imágenes para visualizar el contenido de una publicación.
+- Expandir textos largos.
+- Eliminar publicaciones.
+- Dar y quitar likes mediante solicitudes `PUT` que actualizan los datos de la publicación.
+- Guardar y quitar publicaciones de la sección de guardados.
+- Actualizar el estado de las publicaciones guardadas y reflejar los cambios en la interfaz.
 
-Cada publicación puede incluir:
+Las URLs de imagen admiten las extensiones `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.avif`, `.bmp` y `.svg`. Se permiten parámetros en la URL después de la extensión.
 
-- Texto o descripción.
-- Imagen.
-- Likes.
-- Estado de guardado.
-- Opción para eliminar la publicación.
-- Sección de comentarios.
+### 🔖 Publicaciones guardadas
 
-Las publicaciones se muestran en el feed principal y permiten al usuario interactuar con ellas.
+- Consultar las publicaciones guardadas desde la sección correspondiente.
+- Guardar publicaciones y quitarlas de la lista.
+- Actualizar los datos mediante los endpoints de la API.
+- Mostrar un pequeño indicador rojo en la esquina superior derecha de una publicación cuando está guardada.
+- Acceder directamente a la publicación guardada al hacer clic en el indicador.
+- Sincronizar la acción de guardar o quitar de guardados entre las distintas secciones de la aplicación.
 
-### 💾 Publicaciones guardadas
+La sección de guardados está disponible en la ruta `/guardados`.
 
-Las publicaciones marcadas como guardadas se almacenan en una sección independiente.
+### 🔎 Búsqueda de animes
 
-El usuario podrá consultar posteriormente las publicaciones que haya guardado.
+- Buscar animes mediante la API de AniList.
+- Mostrar resultados reales de búsqueda en lugar de contenido de ejemplo.
+- Presentar los resultados en grupos de tres elementos.
+- Facilitar el descubrimiento de contenido visual relacionado con anime.
 
-## 🔌 API y almacenamiento
+La búsqueda utiliza la API GraphQL de AniList.
 
-Actualmente, la aplicación utiliza **MockAPI** para simular el backend y gestionar los datos mediante una API REST.
+### 🖼️ Galería personal
 
-Se utilizan tres endpoints principales:
+- Incorporar una sección de galería para mostrar imágenes.
+- Guardar las imágenes y los datos correspondientes utilizando `localStorage`.
 
-| Endpoint | Datos gestionados |
-|---|---|
-| **Perfil** | Banner, imagen de perfil, nombre, descripción y tableros |
-| **Publicaciones** | Imagen, texto, likes y estado de guardado |
-| **Guardados** | Publicaciones guardadas por el usuario |
+**Limitación actual:** la galería se almacena localmente en el navegador. Por tanto, sus datos no se sincronizan con un servidor ni entre diferentes dispositivos.
 
-Las operaciones de creación, actualización y eliminación de contenido se realizan mediante solicitudes HTTP a la API.
+## API y almacenamiento
 
-### 🔮 Backend futuro
+La aplicación utiliza actualmente MockAPI para las operaciones de datos que ya están integradas.
 
-MockAPI se utiliza actualmente como una solución temporal para simular la comunicación con un backend.
+| Recurso | Operaciones | Datos |
+|---|---|---|
+| `/publicaciones` | GET, POST, PUT y DELETE por ID | Texto, imagen y datos de interacción de las publicaciones |
+| `/guardados` | GET, POST y DELETE por ID | Identificadores de las publicaciones guardadas |
+| Endpoints del perfil | Consultas y actualizaciones según la implementación | Nombre, descripción, imagen de perfil y banner |
+| `localStorage` | Lectura y escritura local | Datos de la galería personal |
+| AniList GraphQL | Consultas de búsqueda | Información y resultados de animes |
 
-Como parte de la evolución del proyecto, se planea reemplazar MockAPI por un **backend propio**, manteniendo la estructura de la API y trasladando la gestión de usuarios, publicaciones, comentarios y contenido guardado a un servidor propio.
+Los métodos y las rutas concretas de los endpoints del perfil dependen de la configuración actual de MockAPI.
 
+### Almacenamiento y persistencia
 
-## 💬 Comentarios   z
+- **MockAPI:** almacena los datos de las publicaciones, los elementos guardados y el perfil mediante los endpoints configurados.
+- **localStorage:** conserva la información de la galería en el navegador.
+- **AniList:** proporciona los resultados de búsqueda de animes mediante una API externa.
 
-Se incorporará una sección de comentarios que se desplegará debajo de cada publicación, permitiendo visualizar e interactuar con los comentarios asociados a cada post.
-
-## 🌐 API de terceros
-
-Como parte de los requisitos del **Sprint 20**, el proyecto incorpora una API de terceros.
-
-Actualmente, esta integración se encuentra ubicada en el footer como implementación inicial. Como mejora futura, se planea trasladarla a una sección independiente dentro del menú de navegación para mostrar y renderizar el contenido proporcionado por dicha API.
-
-## 🛠️ Tecnologías
+## Tecnologías
 
 - React
 - JavaScript
-- HTML5
-- CSS3
-- MockAPI
-- REST API
-- Git / GitHub
 - Vite
+- HTML5 y CSS3
+- API REST y MockAPI
+- GraphQL y AniList
+- `localStorage`
+- Git y GitHub
 
-## 🚀 Próximas mejoras
+## Ejecución local
 
-- Implementación completa de comentarios.
-- Integración de la API de terceros en una sección independiente.
-- Reemplazo de MockAPI por un backend propio.
-- Gestión de usuarios y autenticación.
-- Mejoras de diseño responsive.
-- Mejoras de experiencia de usuario.
-- Optimización de la gestión de publicaciones y contenido guardado.
+Desde la carpeta `frontend/rutas`, ejecuta:
 
-#enlace https://l.facebook.com/l.php?u=https%3A%2F%2Fmoonlit-buttercream-377e10.netlify.app%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAcGRvZgVicmlkETE4ZXZmaVNqdDVQUVpQa3FQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHh1-FLIafK8Sd8pzNLuotcJak5f6skv2mio7mEd4joyG4wuB1z-ci4P2ryxG_aem_GmxTGmPgnmW9k_kwh-7HbA&h=AUD0PV9M2NEElhTqKJuZlo2QmmV55OJ78cqOCsnjTM83iLq4TWpjO7N2w1HY8Y968B530vpXDdjI4YXB4EeIKTz_ihR1Ajh9vLfEQ2fLlnw-ckHSD5N2N1j_z_5sPYMhwth9Yg
+```bash
+npm install
+npm run dev
+```
+
+Otros comandos disponibles:
+
+```bash
+npm run lint
+npm run build
+```
+
+## Próximas mejoras
+
+### Funcionalidades pendientes
+
+- Implementar comentarios en las publicaciones.
+- Incorporar el registro de usuarios y el inicio de sesión.
+- Crear perfiles individuales asociados a cada usuario.
+- Implementar autenticación y autorización.
+- Gestionar las publicaciones y los elementos guardados de acuerdo con el usuario autenticado.
+- Evaluar la migración de la galería a un almacenamiento persistente en el servidor.
+
+### Backend y arquitectura
+
+- Sustituir MockAPI por un backend propio.
+- Crear una API que gestione usuarios, perfiles, publicaciones, comentarios, likes y elementos guardados.
+- Incorporar una base de datos persistente.
+- Añadir validación y autorización en el servidor.
+- Gestionar de forma segura las sesiones y las credenciales.
+- Preparar la aplicación para su despliegue en producción.
+
+## Estado del proyecto
+
+Rutas se encuentra en desarrollo. Ya cuenta con funcionalidades de perfil persistente mediante endpoints, creación y gestión de publicaciones, likes, elementos guardados, búsqueda de animes y una galería local.
+
+El siguiente paso es completar las interacciones sociales y desarrollar un backend propio que permita gestionar usuarios, autenticación y datos de manera centralizada.
+
+LINK: https://moonlit-buttercream-377e10.netlify.app/

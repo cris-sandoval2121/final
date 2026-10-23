@@ -17,7 +17,7 @@ const profileDetails = [
   { icon: Heart, label: "Anime" },
 ];
 
-function AboutMe() {
+function AboutMe({perfil, handlePopup}) {
   return (
     <section className="sidebar__card" aria-labelledby="about-me-title">
       <div className="sidebar__card-heading">
@@ -28,14 +28,13 @@ function AboutMe() {
           className="sidebar__icon-button"
           type="button"
           aria-label="Editar sobre mí"
+          onClick={()=> handlePopup('description')}
+        
         >
           <PencilLine size={16} />
         </button>
       </div>
-      <p className="sidebar__description">
-        Me gusta tomar fotografías, viajar y conocer nuevos lugares. Aquí
-        comparto mis aventuras y momentos favoritos.
-      </p>
+      <p className="sidebar__description">{perfil?.description || 'aun no hay datos:3'} </p>
       <ul className="sidebar__details">
         {profileDetails.map(({ icon: Icon, label }) => (
           <li className="sidebar__detail" key={label}>

@@ -1,31 +1,36 @@
 import Profile from "../../Profile/Profile";
-import { useProfile } from "../../../contexts/profileContext";
-import { Wrench, Image } from "lucide-react";
+import { Image } from "lucide-react";
+import Loader from "../../Loader/Loader";
 
-function Banner({ handlePopup }) {
-  const { bannerImagen, setBannerImagen } = useProfile('');
-
-
+function Banner({ handlePopup, perfil, isProfileLoading }) {
   const bannerDefault =
-    "https://i.pinimg.com/1200x/c4/d0/91/c4d091b63e312b0dcd91e4bcc12471d6.jpg";
+    "https://i.pinimg.com/736x/37/a6/2f/37a62f1efd07210aee6cf44312f08a95.jpg";
 
   return (
     <div className="banner">
-      <img
-        className="banner__imagen"
-        src={bannerImagen || bannerDefault}
-        alt="banner"
-      ></img>
+      {isProfileLoading ? (
+        <div className="banner__loading">
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <img
+            className="banner__imagen"
+            src={perfil?.banner || bannerDefault}
+            alt="banner"
+          ></img>
 
-      <button
-        className="banner__btn"
-        onClick={() => handlePopup("banner")}
-        aria-label="Editar banner"
-      >
-        <Image size={18} />
-      </button>
+          <button
+            className="banner__btn"
+            onClick={() => handlePopup("banner")}
+            aria-label="Editar banner"
+          >
+            <Image size={18} />
+          </button>
 
-      <Profile handlePopup={handlePopup} />
+          <Profile handlePopup={handlePopup} perfil={perfil} />
+        </>
+      )}
     </div>
   );
 }

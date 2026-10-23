@@ -9,7 +9,29 @@
 @import './blocks/animegalery.css';
 @import './blocks/buscar.css';
 @import './blocks/guardados.css';
+@import './blocks/galeria.css';
 @import './blocks/popupImagen.css';
+@import "./blocks/loader.css";
+@import "./blocks/error.css";
+@import "./blocks/dark-mode.css";
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./vendor/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./vendor/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
 
 .page {
     max-width: 1450px;
@@ -32,6 +54,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    /* background-color: #000000f8; */
     background-color: #d09e9ea8;
 }
 
