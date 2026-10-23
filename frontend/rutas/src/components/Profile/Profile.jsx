@@ -48,19 +48,19 @@ function Profile({ handlePopup, perfil }) {
 
         <div className="perfil__gustos">
           <button className="perfil__gustos-btn">
-            <Camera size={16} /> Fotos
+            <Camera size={26} /> Fotos
           </button>
           <button className="perfil__gustos-btn">
-            <Sparkles size={16} /> Anime
+            <Sparkles size={26} /> Anime
           </button>
           <button className="perfil__gustos-btn">
-            <Plane size={16} /> Viajes
+            <Plane size={26} /> Viajes
           </button>
           <button className="perfil__gustos-btn">
-            <Music4 size={16} /> Musica
+            <Music4 size={26} /> Musica
           </button>
           <button className="perfil__gustos-btn">
-            <BookOpenText size={16} /> Historis
+            <BookOpenText size={26} /> Historis
           </button>
 
           <div className="perfil__tableros">

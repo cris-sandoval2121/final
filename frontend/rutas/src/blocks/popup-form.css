@@ -140,3 +140,17 @@
     transform: translateY(3px);
     box-shadow: 0 0 0 #000;
 }
+
+.popup__error{
+    position: relative;
+    top: -60px;
+    text-align: center;
+    color: #f2f0f0;
+    background-color: #ff0000;
+    border-radius: 10px;
+    box-shadow: #5e0031 10px 1px 10px ;
+    font-weight: 600;
+    padding: 10px;
+    animation: alternate 0.20s;
+    transition: all ease-in-out 0.60s;
+}

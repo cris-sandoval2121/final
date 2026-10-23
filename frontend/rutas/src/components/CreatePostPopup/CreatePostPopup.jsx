@@ -10,6 +10,8 @@ function CreatePostPopup({ close, postTextConect }) {
   const [validationError, setValidationError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const [errorCreatePost, setErrorCreatePost] = useState('');
+
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "Escape") close();
@@ -20,7 +22,8 @@ function CreatePostPopup({ close, postTextConect }) {
   }, [close]);
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault();  
+    if(isLoading) return;
 
     const postText = createPostInput.trim();
     const imageUrl = createPostImagenInput.trim();
@@ -46,11 +49,16 @@ function CreatePostPopup({ close, postTextConect }) {
 
     setValidationError("");
     setIsLoading(true);
+  
+
     try {
       await postTextConect(postText, imageUrl);
       close();
+    } catch (error) {
+      console.error('algo salio mal al subir el post:', error);
+      setErrorCreatePost('no se pudo publicar, Intentalo de nuevo');
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
@@ -61,6 +69,12 @@ function CreatePostPopup({ close, postTextConect }) {
       <div className="popup__container" role="dialog" aria-modal="true">
         <div className="popup__header">
           <h2 className="popup__title">Crear publicación</h2>
+
+          {errorCreatePost && (
+            <p className="popup__error" role="alert">
+              {errorCreatePost}
+            </p>
+          )}
 
           <button
             className="popup__close"

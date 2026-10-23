@@ -1,4 +1,8 @@
+import imagen from "../../assets/Firefly-optimized.png";
+
 function CreatePost({ handlePopupCreatePost, perfil }) {
+
+  
   return (
     <section className="create-post contenedordos">
       <div className="create-post__top">
@@ -17,22 +21,14 @@ function CreatePost({ handlePopupCreatePost, perfil }) {
       </div>
 
       <div className="create-post__actions">
-        <button className="create-post__action">
-          <span className="create-post__icon">▣</span>
-          <span>Foto</span>
-        </button>
+        <div className="mascota">
+  <div className="mascota__personaje" >
+    <img className="mascota__imagen" src={imagen} alt="imagen png"/>
+  </div>
 
-        <button className="create-post__action">
-          <span className="create-post__icon">▣</span>
-          <span>Video</span>
-        </button>
-
-        <button className="create-post__action">
-          <span className="create-post__icon">⌖</span>
-          <span>Ubicación</span>
-        </button>
-
-        <button className="create-post__publish">Publicar</button>
+  <span className="mascota__brillo">✦</span>
+</div>
+        <button className="create-post__publish" onClick={handlePopupCreatePost}>Publicar</button>
       </div>
     </section>
   );
